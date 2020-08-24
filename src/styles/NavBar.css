@@ -1,3 +1,4 @@
+/* Main NavBar */
 
 .NavBar {
   background: #2A9BE4;
@@ -22,6 +23,8 @@
   margin-left: 50px;
 }
 
+/* UserAccount Dropdown */
+
 .UserAccount {
   font-style: normal;
   font-weight: bold;
@@ -30,12 +33,72 @@
   text-align: center;
   color: #FFFFFF;
   margin-right: 50px;
+  cursor: pointer;
+}
+
+.UserAccount:hover {
+  color: #CFCFCF;
 }
 
 .DownArrow {
-  font-size: 12px;
-  line-height: 42px;
+  font-size: medium;
 }
+
+.UserAccountMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  width: 200px;
+  right: 35px;
+  top: 85px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 1rem 0;
+}
+
+.UserAccountMenu > button {
+  border: none;
+  background: #FFFFFF;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  color: #A7A8BA;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.UserAccountMenu > button:hover {
+  color: #CFCFCF;
+}
+
+.UserAccountMenu > button:focus {
+  outline: none;
+}
+
+.AccountMenu-enter {
+  opacity: 0;
+}
+
+.AccountMenu-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.AccountMenu-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.seperator {
+  width: 100%;
+  background: #A7A8BA;
+}
+
+/* Burger */
 
 .Burger {
   position: absolute;
@@ -58,7 +121,6 @@
 
 .Burger:hover > div {
   background: #CFCFCF;
-  opacity: 0.8;
 }
 
 .Burger > div {
@@ -83,6 +145,8 @@
 .burger_open:nth-child(3) {
   transform: rotate(-45deg);
 }
+
+/* Menu */
 
 .Menu {
   display: flex;
@@ -110,8 +174,28 @@
   opacity: 0.8;
 }
 
+.Menu-enter {
+  transform: translateX(-100%);
+}
+
+.Menu-enter-active {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.Menu-exit-active {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
 @media screen and (max-width: 760px) {
   .NavBar {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .Menu {
+    width: 175px;
   }
 }

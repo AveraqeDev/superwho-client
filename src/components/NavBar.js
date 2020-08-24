@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { slide as SlideMenu } from 'react-burger-menu';
+import { CSSTransition } from 'react-transition-group';
 
 import '../styles/NavBar.css';
-import { CSSTransition } from 'react-transition-group';
 
 const Branding = () => {
   return (
@@ -35,17 +34,28 @@ const Menu = ({ open, setOpen }) => {
   );
 };
 
-const UserAccount = () => {
+const UserAccount = ({ open, setOpen }) => {
   
   return (
     <div className="UserAccount">
-      <p>username <span className="DownArrow">▼</span></p>
+      <p onClick={() => setOpen(!open)}>username <span className="DownArrow">▼</span></p>
+    </div>
+  );
+}
+
+const UserAccountMenu = ({ open, setOpen }) => {
+  return (
+    <div className="UserAccountMenu">
+      <button onClick={() => setOpen(!open)}>Profile</button>
+      <hr className="seperator"></hr>
+      <button onClick={() => setOpen(!open)}>Logout</button>
     </div>
   );
 }
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
   const resizeWindow = () => {
     setWindowWidth(window.innerWidth);
@@ -60,14 +70,14 @@ const NavBar = () => {
   if(windowWidth <= 760) {
     return (
       <nav className="NavBar">
-        <Burger open={open} setOpen={setOpen} />
+        <Burger open={navOpen} setOpen={setNavOpen} />
         <CSSTransition
-          in={open}
+          in={navOpen}
           timeout={300}
           classNames='Menu'
           unmountOnExit
         >
-          <Menu open={open} setOpen={setOpen} />
+          <Menu open={navOpen} setOpen={setNavOpen} />
         </CSSTransition>
         <Branding />
       </nav>
@@ -76,7 +86,15 @@ const NavBar = () => {
     return (
       <nav className="NavBar">
         <Branding />
-        <UserAccount />
+        <UserAccount open={accountOpen} setOpen={setAccountOpen} />
+        <CSSTransition
+          in={accountOpen}
+          timeout={300}
+          classNames='AccountMenu'
+          unmountOnExit
+        >
+          <UserAccountMenu open={accountOpen} setOpen={setAccountOpen} />
+        </CSSTransition>
       </nav>
     )
   }
