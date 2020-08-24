@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../components/PrivateRoute';
 import PublicRoute from '../components/PublicRoute';
 
@@ -32,11 +32,16 @@ function App() {
               component={Register}
             />
 
-            <PrivateRoute
+            <Route
               exact
               path='/'
               component={Search}
             />
+            <Route 
+              path='/superhero/:heroId'
+              component={Hero}
+            />
+
             <PrivateRoute 
               path='/favorites'
               component={Favorites}
@@ -44,10 +49,6 @@ function App() {
             <PrivateRoute 
               path='/profile'
               component={Profile}
-            />
-            <PrivateRoute 
-              path='/superhero/:heroId'
-              component={Hero}
             />
 
           </Switch>

@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+
+import TokenService from '../services/token-service';
+import { UserContext } from '../contexts/UserContext';
 
 import '../styles/NavBar.css';
 
 const Branding = () => {
   return (
-    <h1 className="Branding">SuperWho?</h1>
+    <Link className="Branding" to="/">SuperWho?</Link>
   );
 };
 
@@ -23,37 +27,77 @@ const Burger = ({ open, setOpen }) => {
   )
 };
 
-const Menu = ({ open, setOpen }) => {
+const Menu = ({ open, setOpen, onLogout, location }) => {
+  const { pathname } = location;
+
+  const { user } = useContext(UserContext);
+
   return (
     <div className="Menu">
-      <p className="Menu__Link">Search</p>
-      <p className="Menu__Link">Favorites</p>
-      <p className="Menu__Link">Profile</p>
-      <p className="Menu__Link">Logout</p>
+      <Link className={`Menu__Link${pathname === '/' ? ' Menu__Link-selected' : ''}`} to='/' onClick={() => setOpen(!open)}>Search</Link>
+      {(user.id)
+        ? <Link className={`Menu__Link${pathname === '/favorites' ? ' Menu__Link-selected' : ''}`} to='/favorites' onClick={() => setOpen(!open)}>Favorites</Link>
+        : ''
+      }
+      {(user.id)
+        ? <Link className={`Menu__Link${pathname === '/profile' ? ' Menu__Link-selected' : ''}`} to='/profile' onClick={() => setOpen(!open)}>Profile</Link>
+        : <Link className={`Menu__Link${pathname === '/login' ? ' Menu__Link-selected' : ''}`} to='/login' onClick={() => setOpen(!open)}>Login</Link>
+      }
+      {(user.id)
+        ? <button className="Menu__Link" onClick={onLogout}>Logout</button>
+        : <Link className={`Menu__Link${pathname === '/register' ? ' Menu__Link-selected' : ''}`} to='/register' onClick={() => setOpen(!open)}>Register</Link>
+      }
     </div>
   );
 };
 
 const UserAccount = ({ open, setOpen }) => {
-  
-  return (
-    <div className="UserAccount">
-      <p onClick={() => setOpen(!open)}>username <span className="DownArrow">▼</span></p>
-    </div>
-  );
+  const { user } = useContext(UserContext);
+
+  if(user.id) {
+    //TODO: Use users actual username
+    return (
+      <div className="UserAccount">
+        <p onClick={() => setOpen(!open)}>username <span className="DownArrow">▼</span></p>
+      </div>
+    );
+  } else {
+    return (
+      <div className="UserAccount">
+        <Link className="UserAccount__Link" to="/login">Login</Link>
+        <Link className="UserAccount__Link" to="/register">Register</Link>
+      </div>
+    );
+  }
 }
 
-const UserAccountMenu = ({ open, setOpen }) => {
+const UserAccountMenu = ({ open, setOpen, onLogout }) => {
   return (
     <div className="UserAccountMenu">
-      <button onClick={() => setOpen(!open)}>Profile</button>
+      <Link className="UserAccountMenu__Link" to="/profile" onClick={() => setOpen(!open)}>Profile</Link>
       <hr className="seperator"></hr>
-      <button onClick={() => setOpen(!open)}>Logout</button>
+      <button className="UserAccountMenu__Link" onClick={onLogout}>Logout</button>
     </div>
   );
 }
 
-const NavBar = () => {
+const Sidebar = (props) => {
+  const { pathname } = props.location;
+
+  const { user } = useContext(UserContext);
+
+  return (
+    <div className="Menu">
+      <Link className={`Menu__Link${pathname === '/' ? ' Menu__Link-selected' : ''}`} to='/'>Search</Link>
+      {(user.id)
+        ? <Link className={`Menu__Link${pathname === '/favorites' ? ' Menu__Link-selected' : ''}`} to='/favorites'>Favorites</Link>
+        : ''
+      }
+    </div>
+  );
+};
+
+const NavBar = (props) => {
   const [navOpen, setNavOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
@@ -61,11 +105,20 @@ const NavBar = () => {
     setWindowWidth(window.innerWidth);
   };
 
+  const { setUser } = useContext(UserContext);
+
   useEffect(() => {
     resizeWindow();
     window.addEventListener("resize", resizeWindow);
     return () => window.removeEventListener("resize", resizeWindow);
   }, []);
+
+  const onLogout = () => {
+    setNavOpen(false);
+    TokenService.clearAuthToken();
+    setUser({});
+    props.history.push('/');
+  };
 
   if(windowWidth <= 760) {
     return (
@@ -77,7 +130,7 @@ const NavBar = () => {
           classNames='Menu'
           unmountOnExit
         >
-          <Menu open={navOpen} setOpen={setNavOpen} />
+          <Menu open={navOpen} setOpen={setNavOpen} onLogout={onLogout} location={props.location} />
         </CSSTransition>
         <Branding />
       </nav>
@@ -85,6 +138,7 @@ const NavBar = () => {
   } else {
     return (
       <nav className="NavBar">
+        <Sidebar location={props.location} />
         <Branding />
         <UserAccount open={accountOpen} setOpen={setAccountOpen} />
         <CSSTransition
@@ -93,11 +147,11 @@ const NavBar = () => {
           classNames='AccountMenu'
           unmountOnExit
         >
-          <UserAccountMenu open={accountOpen} setOpen={setAccountOpen} />
+          <UserAccountMenu open={accountOpen} setOpen={setAccountOpen} onLogout={onLogout} />
         </CSSTransition>
       </nav>
     )
   }
 };
 
-export default NavBar;
+export default withRouter(NavBar);

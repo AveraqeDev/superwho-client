@@ -20,6 +20,7 @@
   text-align: center;
   color: #FFFFFF;
   margin-left: 50px;
+  text-decoration: none;
 }
 
 /* UserAccount Dropdown */
@@ -43,6 +44,17 @@
   font-size: medium;
 }
 
+.UserAccount__Link {
+  text-decoration: none;
+  color: #FFFFFF;
+  padding-left: 1.5rem;
+  transition: all 0.2s linear;
+}
+
+.UserAccount__Link:hover {
+  color: #CFCFCF;
+}
+
 .UserAccountMenu {
   display: flex;
   flex-direction: column;
@@ -54,9 +66,10 @@
   background: #FFFFFF;
   border-radius: 5px;
   padding: 1rem 0;
+  text-align: center;
 }
 
-.UserAccountMenu > button {
+.UserAccountMenu__Link {
   border: none;
   background: #FFFFFF;
   border-radius: 5px;
@@ -68,13 +81,15 @@
   height: 100%;
   cursor: pointer;
   padding: 5px;
+  text-decoration: none;
+  transition: all 0.2s linear;
 }
 
-.UserAccountMenu > button:hover {
+.UserAccountMenu__Link:hover {
   color: #CFCFCF;
 }
 
-.UserAccountMenu > button:focus {
+.UserAccountMenu__Link:focus {
   outline: none;
 }
 
@@ -127,7 +142,7 @@
   height: 0.25rem;
   background: #FFFFFF;
   border-radius: 10px;
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
   position: relative;
   transform-origin: 1px;
 }
@@ -153,19 +168,31 @@
   justify-content: flex-start;
   background: #404853;
   height: 100vh;
-  width: 40%;
-  padding: 2rem;
+  width: 250px;
   text-align: center;
   position: absolute;
   top: 104px;
   left: 0;
 }
 
+.Menu > button {
+  padding: 0;
+}
+
 .Menu__Link {
   font-size: 24px;
   font-weight: bold;
   color: #FFFFFF;
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 2rem;
+}
+
+.Menu__Link-selected {
+  background: #233038;
 }
 
 .Menu__Link:hover {
@@ -187,9 +214,15 @@
   transition: transform 0.3s ease-in-out;
 }
 
+/* Media Queries */
+
 @media screen and (max-width: 760px) {
   .NavBar {
     justify-content: center;
+  }
+
+  .Menu {
+    width: 40%;
   }
 }
 
