@@ -1,0 +1,117 @@
+
+.NavBar {
+  background: #2A9BE4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 104px;
+  left: 0px;
+  top: 0px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.Branding {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 56px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-left: 50px;
+}
+
+.UserAccount {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 42px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-right: 50px;
+}
+
+.DownArrow {
+  font-size: 12px;
+  line-height: 42px;
+}
+
+.Burger {
+  position: absolute;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.Burger:focus {
+  outline: none;
+}
+
+.Burger:hover > div {
+  background: #CFCFCF;
+  opacity: 0.8;
+}
+
+.Burger > div {
+  width: 2rem;
+  height: 0.25rem;
+  background: #FFFFFF;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.burger_open:first-child {
+  transform: rotate(45deg);
+}
+
+.burger_open:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.burger_open:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.Menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #404853;
+  height: 100vh;
+  width: 40%;
+  padding: 2rem;
+  text-align: center;
+  position: absolute;
+  top: 104px;
+  left: 0;
+}
+
+.Menu__Link {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FFFFFF;
+  transition: all 0.3s linear;
+}
+
+.Menu__Link:hover {
+  color: #CFCFCF;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 760px) {
+  .NavBar {
+    justify-content: center;
+  }
+}
