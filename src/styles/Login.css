@@ -1,0 +1,112 @@
+.Login {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.SidePanel {
+  width: 50%;
+  height: 100%;
+  background: #2A9BE4;
+  box-shadow: 4px 0 4px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+}
+
+.SidePanel > h1 {
+  font-size: 50px;
+  padding: 2rem;
+}
+
+.SidePanel__message {
+  padding: 5rem;
+}
+
+.SidePanel__message > h2 {
+  margin-bottom: 0;
+  font-size: 40px;
+}
+
+.SidePanel__message > p {
+  font-size: 20px;
+}
+
+.LoginForm {
+  width: 50%;
+  padding: 0 5rem;
+  margin: auto auto;
+  min-width: 415px;
+}
+
+.Header {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.username {
+  width: 100%;
+}
+
+.username > label {
+  font-size: 20px;
+}
+
+#LoginForm__username {
+  width: 100%;
+  margin: .5rem 0;
+  padding: 12px;
+  color: black;
+}
+
+.password > label {
+  font-size: 20px;
+}
+
+#LoginForm__password {
+  width: 100%;
+  margin: .5rem 0;
+  padding: 12px;
+  color: black;
+}
+
+.LoginForm__button {
+  width: 100%;
+  font-size: 20px;
+  padding: 7px;
+  margin-top: 2rem;
+}
+
+.LoginForm__button:hover {
+  opacity: 0.8;
+}
+
+.LoginForm__signup {
+  text-align: center;
+  color: #CBD0D6;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 1rem;
+}
+
+.LoginForm__signup-link {
+  text-decoration: none;
+  color: #2A9BE4;
+}
+
+.LoginForm__signup-link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 900px) {
+  .SidePanel__message {
+    padding: 5rem 2.5rem;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .LoginForm {
+    width: 100%;
+    padding: 0 5rem;
+  }
+}

@@ -1,0 +1,17 @@
+.Favorites {
+  margin-left: 15%;
+  padding: .5rem;
+}
+
+
+@media screen and (max-width: 900px) {
+  .Favorites {
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Favorites {
+    margin-left: 0;
+  }
+}

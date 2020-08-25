@@ -168,7 +168,7 @@
   justify-content: flex-start;
   background: #404853;
   height: 100vh;
-  width: 250px;
+  width: 15%;
   text-align: center;
   position: absolute;
   top: 104px;
@@ -216,18 +216,24 @@
 
 /* Media Queries */
 
+@media screen and (max-width: 900px) {
+  .Menu {
+    width: 20%;
+  }
+}
+
 @media screen and (max-width: 760px) {
   .NavBar {
     justify-content: center;
   }
 
   .Menu {
-    width: 40%;
+    width: 25%;
   }
 }
 
 @media screen and (max-width: 420px) {
   .Menu {
-    width: 175px;
+    width: 200px;
   }
 }

@@ -120,6 +120,10 @@ const NavBar = (props) => {
     props.history.push('/');
   };
 
+  if(props.location.pathname === '/login' || props.location.pathname === '/register') {
+    return '';
+  }
+
   if(windowWidth <= 760) {
     return (
       <nav className="NavBar">

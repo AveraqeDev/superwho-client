@@ -1,0 +1,17 @@
+.Profile {
+  margin-left: 15%;
+  padding: .5rem;
+}
+
+
+@media screen and (max-width: 900px) {
+  .Profile {
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Profile {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,17 @@
+.Search {
+  margin-left: 15%;
+  padding: .5rem;
+}
+
+
+@media screen and (max-width: 900px) {
+  .Search {
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Search {
+    margin-left: 0;
+  }
+}

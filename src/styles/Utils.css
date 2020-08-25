@@ -1,0 +1,28 @@
+.Input {
+  display: block;
+  background: #EFEFEF;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #CBD0D6;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: left;
+}
+
+.Input::placeholder {
+  color: #CBD0D6;
+  font-size: 16px;
+}
+
+.Button {
+  background: #2A9BE4;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  cursor: pointer;
+  font-weight: bold;
+}
