@@ -25,7 +25,7 @@ const LoginForm = () => {
     setError(null);
     const { username, password } = e.target;
 
-    console.log(username, password);
+    console.log(username.value, password.value);
   };
   
   return (
@@ -35,7 +35,7 @@ const LoginForm = () => {
         {error && <p className='error'>{error}</p>}
       </div>
 
-      <div className='username'>
+      <div className='LoginForm__username-container'>
         <label htmlFor='LoginForm__username'>
           Username
         </label>
@@ -46,7 +46,7 @@ const LoginForm = () => {
           placeholder='Enter Your Username'
         />
       </div>
-      <div className='password'>
+      <div className='LoginForm__password-container'>
         <label htmlFor='LoginForm__password'>
           Password
         </label>

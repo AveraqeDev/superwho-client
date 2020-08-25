@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-* {
+*, *::after, *::before {
   box-sizing: border-box;
 }
 
@@ -11,7 +16,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.error {
+  color: #FF0000;
+  width: 100%;
+  margin-top: -1.5rem;
 }

@@ -1,8 +1,20 @@
 .Favorites {
   margin-left: 15%;
-  padding: .5rem;
 }
 
+.FavoritesHeader {
+  background: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.FavoritesHeader > h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 900px) {
   .Favorites {

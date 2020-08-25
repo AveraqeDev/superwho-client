@@ -2,7 +2,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100vw;
   height: 100vh;
 }
 
@@ -34,9 +33,9 @@
 
 .LoginForm {
   width: 50%;
-  padding: 0 5rem;
+  padding: 0 3rem;
   margin: auto auto;
-  min-width: 415px;
+  max-width: 600px;
 }
 
 .Header {
@@ -44,36 +43,32 @@
   margin-bottom: 40px;
 }
 
-.username {
-  width: 100%;
-}
-
-.username > label {
+.LoginForm__username-container > label {
   font-size: 20px;
 }
 
 #LoginForm__username {
   width: 100%;
   margin: .5rem 0;
-  padding: 12px;
+  padding: 15px;
   color: black;
 }
 
-.password > label {
+.LoginForm__password-container > label {
   font-size: 20px;
 }
 
 #LoginForm__password {
   width: 100%;
   margin: .5rem 0;
-  padding: 12px;
+  padding: 15px;
   color: black;
 }
 
 .LoginForm__button {
   width: 100%;
   font-size: 20px;
-  padding: 7px;
+  padding: 9px;
   margin-top: 2rem;
 }
 
@@ -107,6 +102,5 @@
 @media screen and (max-width: 760px) {
   .LoginForm {
     width: 100%;
-    padding: 0 5rem;
   }
 }
