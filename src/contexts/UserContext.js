@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import TokenService from '../services/token-service';
+import UserApiService from '../services/user-api-service';
 
 export const UserContext = createContext({
   user: {},
@@ -7,6 +8,8 @@ export const UserContext = createContext({
   error: {},
   setUser: () => {},
   setFavorites: () => {},
+  addFavorite: () => {},
+  removeFavorite: () => {},
   setError: () => {}
 });
 
@@ -15,20 +18,38 @@ export const UserProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState({});
 
-  const parseToken = (token) => {
-    try {
-      return JSON.parse(atob(token.split('.')[1]));
-    } catch (e) {
-      setError(e);
-      return null;
-    }
-  };
-
   useEffect(() => {
+
+    const fetchFavorites = async () => {
+      try {
+        const favs = UserApiService.getUserFavorites(user.id);
+        setFavorites(favs);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
     if(!user.id && TokenService.hasAuthToken()) {
-      setUser(parseToken(TokenService.getAuthToken()));
+      setUser(TokenService.parseToken(TokenService.getAuthToken()));
+      fetchFavorites();
+    }
+
+    if(!!favorites && (!user.id && !TokenService.hasAuthToken())) {
+      setFavorites([]);
     }
   }, [user.id, favorites]);
+
+  const addFavorite = (hero) => {
+    setFavorites([...favorites, hero]);
+    UserApiService.addUserFavorite(user.id, hero)
+      .catch(setError);
+  }
+
+  const removeFavorite = (hero) => {
+    setFavorites(favorites.map(fav => fav !== hero));
+    UserApiService.removeUserFavorite(user.id, hero)
+      .catch(setError);
+  }
 
   const value = {
     user,
@@ -36,6 +57,8 @@ export const UserProvider = ({ children }) => {
     error,
     setUser,
     setFavorites,
+    addFavorite,
+    removeFavorite,
     setError
   };
 

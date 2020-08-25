@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Input, Button } from '../components/Utils';
 import { Link } from 'react-router-dom';
+
+import UserApiService from '../services/user-api-service';
 
 import '../styles/Register.css';
 
@@ -16,15 +19,32 @@ const SidePanel = () => {
   );
 };
 
-const RegisterForm = () => {
+const RegisterForm = ({ onRegister }) => {
   const [error, setError] = useState(null);
   
   const onSubmit = e => {
     e.preventDefault();
-    setError(null);
     const { username, password, confirmPassword } = e.target;
+    
+    setError(null);
+    if(password.value !== confirmPassword.value) {
+      setError('Passwords do not match!');
+      return;
+    }
 
-    console.log(username.value, password.value, confirmPassword.value);
+    UserApiService.registerUser({
+      username: username.value,
+      password: password.value
+    })
+      .then(() => {
+        username.value = '';
+        password.value = '';
+        confirmPassword.value = '';
+        onRegister();
+      })
+      .catch(res => {
+        setError(res.error);
+      })
   };
   
   return (
@@ -78,7 +98,7 @@ const RegisterForm = () => {
   );
 };
 
-const Register = () => {
+const Register = (props) => {
   const [windowWidth, setWindowWidth] = useState(0);
   const resizeWindow = () => {
     setWindowWidth(window.innerWidth);
@@ -90,20 +110,24 @@ const Register = () => {
     return () => window.removeEventListener("resize", resizeWindow);
   }, []);
 
+  const onRegister = () => {
+    props.history.push('/login');
+  };
+
   if(windowWidth <= 760) {
     return (
       <div className='Register'>
-        <RegisterForm />
+        <RegisterForm onRegister={onRegister} />
       </div>
     );
   } else {
     return (
       <div className='Register'>
         <SidePanel />
-        <RegisterForm />
+        <RegisterForm onRegister={onRegister} />
       </div>
     );
   }
 };
 
-export default Register;
+export default withRouter(Register);

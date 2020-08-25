@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
+import TokenService from '../services/token-service';
+import { UserContext } from '../contexts/UserContext';
 import { Input, Button } from '../components/Utils';
+
+import  UserApiService from '../services/user-api-service';
 
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
@@ -17,15 +21,26 @@ const SidePanel = () => {
   );
 };
 
-const LoginForm = () => {
+const LoginForm = ( { onLogin }) => {
   const [error, setError] = useState(null);
   
   const onSubmit = e => {
     e.preventDefault();
-    setError(null);
     const { username, password } = e.target;
 
-    console.log(username.value, password.value);
+    setError(null);
+    UserApiService.loginUser({
+      username: username.value,
+      password: password.value
+    })
+      .then(res => {
+        username.value = '';
+        password.value = '';
+        onLogin(res.authToken);
+      })
+      .catch(error => {
+        setError(error.error);
+      });
   };
   
   return (
@@ -67,8 +82,9 @@ const LoginForm = () => {
   );
 };
 
-const Login = () => {
+const Login = (props) => {
   const [windowWidth, setWindowWidth] = useState(0);
+  const { setUser } = useContext(UserContext);
   const resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -79,20 +95,30 @@ const Login = () => {
     return () => window.removeEventListener("resize", resizeWindow);
   }, []);
 
+  const onLogin = token => {
+    const { location, history } = props;
+    const destination = (location.state || {}).from || '/';
+
+    TokenService.saveAuthToken(token);
+    setUser(TokenService.parseToken(token));
+
+    history.push(destination);
+  }
+
   if(windowWidth <= 760) {
     return (
       <div className='Login'>
-        <LoginForm />
+        <LoginForm onLogin={onLogin} />
       </div>
     );
   } else {
     return (
       <div className='Login'>
         <SidePanel />
-        <LoginForm />
+        <LoginForm onLogin={onLogin} />
       </div>
     );
   }
 };
 
-export default Login;
+export default withRouter(Login);

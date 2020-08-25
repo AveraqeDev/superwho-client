@@ -15,16 +15,32 @@ const UserApiService = {
         );
   },
 
-  addUserFavorite(userId, heroId) {
+  addUserFavorite(userId, hero) {
     return fetch(`${config.USER_API}/users/${userId}/favorites`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ heroId })
+      body: JSON.stringify({ hero })
     })
       .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+          );
+  },
+
+  removeUserFavorite(userId, hero) {
+    return fetch(`${config.USER_API}/users/${userId}/favorites`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ hero })
+    })
+      .then(res => 
           (!res.ok)
             ? res.json().then(e => Promise.reject(e))
             : res.json()
