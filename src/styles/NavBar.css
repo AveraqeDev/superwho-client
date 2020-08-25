@@ -175,10 +175,6 @@
   left: 0;
 }
 
-.Menu > button {
-  padding: 0;
-}
-
 .Menu__Link {
   font-size: 24px;
   font-weight: bold;

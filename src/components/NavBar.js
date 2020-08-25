@@ -54,11 +54,10 @@ const Menu = ({ open, setOpen, onLogout, location }) => {
 const UserAccount = ({ open, setOpen }) => {
   const { user } = useContext(UserContext);
 
-  if(user.id) {
-    //TODO: Use users actual username
+  if(user) {
     return (
       <div className="UserAccount">
-        <p onClick={() => setOpen(!open)}>username <span className="DownArrow">▼</span></p>
+        <p onClick={() => setOpen(!open)}>{user.username} <span className="DownArrow">▼</span></p>
       </div>
     );
   } else {
@@ -89,7 +88,7 @@ const Sidebar = (props) => {
   return (
     <div className="Menu">
       <Link className={`Menu__Link${pathname === '/' ? ' Menu__Link-selected' : ''}`} to='/'>Search</Link>
-      {(user.id)
+      {(user)
         ? <Link className={`Menu__Link${pathname === '/favorites' ? ' Menu__Link-selected' : ''}`} to='/favorites'>Favorites</Link>
         : ''
       }
@@ -115,8 +114,9 @@ const NavBar = (props) => {
 
   const onLogout = () => {
     setNavOpen(false);
+    setAccountOpen(false);
     TokenService.clearAuthToken();
-    setUser({});
+    setUser(null);
     props.history.push('/');
   };
 

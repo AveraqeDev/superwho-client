@@ -14,9 +14,9 @@ export const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [favorites, setFavorites] = useState([]);
-  const [error, setError] = useState({});
+  const [user, setUser] = useState();
+  const [favorites, setFavorites] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
 
@@ -29,7 +29,7 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    if(!user.id && TokenService.hasAuthToken()) {
+    if(!user && TokenService.hasAuthToken()) {
       setUser(TokenService.parseToken(TokenService.getAuthToken()));
       fetchFavorites();
     }
@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
     if(!!favorites && (!user.id && !TokenService.hasAuthToken())) {
       setFavorites([]);
     }
-  }, [user.id, favorites]);
+  }, [user, favorites]);
 
   const addFavorite = (hero) => {
     setFavorites([...favorites, hero]);

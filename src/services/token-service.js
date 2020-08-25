@@ -19,7 +19,11 @@ const TokenService = {
 
   parseToken(token) {
     try {
-      return JSON.parse(atob(token.split('.')[1]));
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return {
+        id: payload.id,
+        username: payload.username
+      };
     } catch (e) {
       return null;
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Button } from '../components/Utils';
+import Table from '../components/Table';
 
 import '../styles/Search.css';
 
@@ -22,22 +23,6 @@ const SearchHeader = ({ onSubmit }) => {
   )
 };
 
-const TableControls = () => {
-  return (
-    <div className="TableControls">
-      <p>Showing 10 of 113</p>
-      <div className="PageButtons">
-        <button className="TableControls__button prev">
-          {'< Prev'}
-        </button>
-        <button className="TableControls__button next">
-          {'Next >'}
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const Search = () => {
 
   const onSubmit = e => {
@@ -47,7 +32,7 @@ const Search = () => {
   return (
     <div className="Search">
       <SearchHeader onSubmit={onSubmit} />
-      <TableControls />
+      <Table />
     </div>
   );
 };
