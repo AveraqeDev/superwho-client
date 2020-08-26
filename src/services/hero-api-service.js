@@ -2,7 +2,7 @@ import config from '../config';
 
 const HeroApiService = {
   searchForHero(term) {
-    return fetch(`${config.SUPER_API}/search/${term}`)
+    return fetch(`${config.HERO_API}/search/${term}`)
       .then(res => 
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
@@ -11,7 +11,7 @@ const HeroApiService = {
   },
 
   getById(id) {
-    return fetch(`${config.SUPER_API}/${id}`)
+    return fetch(`${config.HERO_API}/${id}`)
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
