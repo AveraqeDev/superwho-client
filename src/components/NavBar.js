@@ -7,13 +7,13 @@ import { UserContext } from '../contexts/UserContext';
 
 import '../styles/NavBar.css';
 
-const Branding = () => {
+const Branding = React.memo(function Branding() {
   return (
     <Link className="Branding" to="/">SuperWho?</Link>
   );
-};
+});
 
-const Burger = ({ open, setOpen }) => {
+const Burger = React.memo(function Burger({ open, setOpen }) {
   return (
     <button
     aria-label='Burger Menu'
@@ -25,9 +25,9 @@ const Burger = ({ open, setOpen }) => {
       <div className={open ? 'burger_open' : ''} />
     </button>
   )
-};
+});
 
-const Menu = ({ open, setOpen, onLogout, location }) => {
+const Menu = React.memo(function Menu({ open, setOpen, onLogout, location }) {
   const { pathname } = location;
 
   const { user } = useContext(UserContext);
@@ -49,9 +49,9 @@ const Menu = ({ open, setOpen, onLogout, location }) => {
       }
     </div>
   );
-};
+});
 
-const UserAccount = ({ open, setOpen }) => {
+const UserAccount = React.memo(function UserAccount({ open, setOpen }) {
   const { user } = useContext(UserContext);
 
   if(user) {
@@ -68,9 +68,9 @@ const UserAccount = ({ open, setOpen }) => {
       </div>
     );
   }
-}
+});
 
-const UserAccountMenu = ({ open, setOpen, onLogout }) => {
+const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOpen, onLogout }) {
   return (
     <div className="UserAccountMenu">
       <Link className="UserAccountMenu__Link" to="/profile" onClick={() => setOpen(!open)}>Profile</Link>
@@ -78,9 +78,9 @@ const UserAccountMenu = ({ open, setOpen, onLogout }) => {
       <button className="UserAccountMenu__Link" onClick={onLogout}>Logout</button>
     </div>
   );
-}
+});
 
-const Sidebar = (props) => {
+const Sidebar = React.memo(function Sidebar(props) {
   const { pathname } = props.location;
 
   const { user } = useContext(UserContext);
@@ -94,7 +94,7 @@ const Sidebar = (props) => {
       }
     </div>
   );
-};
+});
 
 const NavBar = (props) => {
   const [navOpen, setNavOpen] = useState(false);

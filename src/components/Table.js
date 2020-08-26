@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-
 import { ApiContext } from '../contexts/ApiContext';
 
 import '../styles/Table.css';
 
-const TableControls = () => {
+const TableControls = React.memo(function TableConrtols() {
   return (
     <div className="TableControls">
       <p>Showing 10 of 113</p>
@@ -18,16 +17,18 @@ const TableControls = () => {
       </div>
     </div>
   );
-};
+});
 
 const Table = () => {
+  const { results } = useContext(ApiContext);
 
-  const { results, searched, error } = useContext(ApiContext);
+  console.log(results);
 
   return (
     <div className="Table">
       <TableControls />
       <h1>Data Table goes here</h1>
+      {results}
     </div>
   )
 };

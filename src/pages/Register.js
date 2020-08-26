@@ -7,7 +7,7 @@ import UserApiService from '../services/user-api-service';
 
 import '../styles/Register.css';
 
-const SidePanel = () => {
+const SidePanel = React.memo(function SidePanel() {
   return (
     <div className='SidePanel'>
       <h1>SuperWho?</h1>
@@ -17,9 +17,9 @@ const SidePanel = () => {
       </div>
     </div>
   );
-};
+});
 
-const RegisterForm = ({ onRegister }) => {
+const RegisterForm = React.memo(function RegisterForm({ onRegister }) {
   const [error, setError] = useState(null);
   
   const onSubmit = e => {
@@ -96,7 +96,7 @@ const RegisterForm = ({ onRegister }) => {
       <p className='RegisterForm__login'>Already have an account? <Link className='RegisterForm__login-link' to='/login'>Log In</Link></p>
     </form>
   );
-};
+});
 
 const Register = (props) => {
   const [windowWidth, setWindowWidth] = useState(0);

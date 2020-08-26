@@ -14,7 +14,7 @@ import Favorites from '../pages/Favorites';
 import Profile from '../pages/Profile';
 import Hero from '../pages/Hero';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header>
