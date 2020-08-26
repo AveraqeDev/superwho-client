@@ -35,15 +35,15 @@ const Menu = React.memo(function Menu({ open, setOpen, onLogout, location }) {
   return (
     <div className="Menu">
       <Link className={`Menu__Link${pathname === '/' ? ' Menu__Link-selected' : ''}`} to='/' onClick={() => setOpen(!open)}>Search</Link>
-      {(user.id)
+      {(user)
         ? <Link className={`Menu__Link${pathname === '/favorites' ? ' Menu__Link-selected' : ''}`} to='/favorites' onClick={() => setOpen(!open)}>Favorites</Link>
         : ''
       }
-      {(user.id)
+      {(user)
         ? <Link className={`Menu__Link${pathname === '/profile' ? ' Menu__Link-selected' : ''}`} to='/profile' onClick={() => setOpen(!open)}>Profile</Link>
         : <Link className={`Menu__Link${pathname === '/login' ? ' Menu__Link-selected' : ''}`} to='/login' onClick={() => setOpen(!open)}>Login</Link>
       }
-      {(user.id)
+      {(user)
         ? <button className="Menu__Link" onClick={onLogout}>Logout</button>
         : <Link className={`Menu__Link${pathname === '/register' ? ' Menu__Link-selected' : ''}`} to='/register' onClick={() => setOpen(!open)}>Register</Link>
       }
