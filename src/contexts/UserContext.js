@@ -15,7 +15,7 @@ export const UserContext = createContext({
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
-  const [favorites, setFavorites] = useState();
+  const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -34,20 +34,20 @@ export const UserProvider = ({ children }) => {
       fetchFavorites();
     }
 
-    if(!!favorites && (!user.id && !TokenService.hasAuthToken())) {
+    if(!!favorites && (!user && !TokenService.hasAuthToken())) {
       setFavorites([]);
     }
   }, [user, favorites]);
 
   const addFavorite = (hero) => {
     setFavorites([...favorites, hero]);
-    UserApiService.addUserFavorite(user.id, hero)
+    UserApiService.addUserFavorite(user.id, hero.id)
       .catch(setError);
   }
 
-  const removeFavorite = (hero) => {
-    setFavorites(favorites.map(fav => fav !== hero));
-    UserApiService.removeUserFavorite(user.id, hero)
+  const removeFavorite = (heroId) => {
+    setFavorites(favorites.map(fav => fav.id !== heroId));
+    UserApiService.removeUserFavorite(user.id, heroId)
       .catch(setError);
   }
 

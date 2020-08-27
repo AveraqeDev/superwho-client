@@ -18,7 +18,7 @@ const SearchHeader = React.memo(function SearchHeader() {
     setTerm(search.value);
     HeroApiService.searchForHero(search.value)
       .then(res => {
-        setResults(res.results);
+        setResults(res);
       })
       .catch(setError);
   };
@@ -42,10 +42,11 @@ const SearchHeader = React.memo(function SearchHeader() {
 });
 
 const Search = () => {
+  const { results } = useContext(ApiContext);
   return (
     <div className="Search">
       <SearchHeader />
-      <Table />
+      <Table data={results} />
     </div>
   );
 };

@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ApiContext } from '../contexts/ApiContext';
+import React from 'react';
 
 import '../styles/Table.css';
 
@@ -19,16 +18,18 @@ const TableControls = React.memo(function TableConrtols() {
   );
 });
 
-const Table = () => {
-  const { results } = useContext(ApiContext);
-
-  console.log(results);
-
+const Table = ({ data }) => {
   return (
     <div className="Table">
       <TableControls />
       <h1>Data Table goes here</h1>
-      {results}
+      <ul>
+      {data.map((hero, index) => {
+        return (
+          <li key={index}>{hero.name}</li>
+        );
+      })}
+      </ul>
     </div>
   )
 };
