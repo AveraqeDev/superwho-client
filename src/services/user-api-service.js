@@ -3,7 +3,7 @@ import config from '../config';
 
 const UserApiService = {
   getUserFavorites(id) {
-    return fetch(`${config.USER_API}/users/${id}/favorites`, {
+    return fetch(`${config.API_URL}/users/${id}/favorites`, {
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       }
@@ -16,7 +16,7 @@ const UserApiService = {
   },
 
   addUserFavorite(userId, hero) {
-    return fetch(`${config.USER_API}/users/${userId}/favorites`, {
+    return fetch(`${config.API_URL}/users/${userId}/favorites`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`,
@@ -32,7 +32,7 @@ const UserApiService = {
   },
 
   removeUserFavorite(userId, hero) {
-    return fetch(`${config.USER_API}/users/${userId}/favorites`, {
+    return fetch(`${config.API_URL}/users/${userId}/favorites`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`,
@@ -48,7 +48,7 @@ const UserApiService = {
   },
 
   registerUser(user) {
-    return fetch(`${config.USER_API}/users`, {
+    return fetch(`${config.API_URL}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ const UserApiService = {
   },
 
   loginUser({ username, password }) {
-    return fetch(`${config.USER_API}/auth/login`, {
+    return fetch(`${config.API_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
