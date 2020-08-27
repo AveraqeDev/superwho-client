@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
       fetchFavorites();
     }
 
-    if(!!favorites && (!user && !TokenService.hasAuthToken())) {
+    if(!favorites && (!user && !TokenService.hasAuthToken())) {
       setFavorites([]);
     }
   }, [user, favorites]);
