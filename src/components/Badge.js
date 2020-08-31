@@ -5,7 +5,7 @@ import '../styles/Badge.css';
 const Badge = ({ values }) => {
   return (
     <>
-      {values.split(',').map((value, idx) => {
+      {values.map((value, idx) => {
         return (
           <span key={idx} className="badge">
             {value}

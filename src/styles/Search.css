@@ -2,6 +2,10 @@
   margin-left: 15%;
 }
 
+.Search > h2 {
+  padding: 2rem;
+}
+
 .SearchHeader {
   background: #FFFFFF;
   display: flex;
@@ -40,12 +44,6 @@
 
 .SearchForm__button:hover {
   opacity: 0.8;
-}
-
-@media screen and (max-width: 900px) {
-  .Search {
-    margin-left: 20%;
-  }
 }
 
 @media screen and (max-width: 760px) {

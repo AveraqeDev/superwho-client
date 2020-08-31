@@ -1,54 +1,62 @@
 import React from 'react';
-import { useTable, useSortBy } from 'react-table';
+import { useTable, usePagination } from 'react-table';
 
 import '../styles/Table.css';
 
-const TableControls = React.memo(function TableConrtols() {
+const TableControls = ({ pageCount, page, canPrevious, onPrev, canNext, onNext }) => {
   return (
     <div className="TableControls">
-      <p>Showing 10 of 113</p>
+      <p>Page {page + 1} of {pageCount}</p>
       <div className="PageButtons">
-        <button className="TableControls__button prev">
+        <button className="TableControls__button prev" onClick={onPrev} disabled={!canPrevious}>
           {'< Prev'}
         </button>
-        <button className="TableControls__button next">
+        <button className="TableControls__button next" onClick={onNext} disabled={!canNext}>
           {'Next >'}
         </button>
       </div>
     </div>
   );
-});
+};
 
 const Table = ({ columns, data }) => {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
-    prepareRow
+    page,
+    prepareRow,
+
+    canPreviousPage,
+    canNextPage,
+    pageCount,
+    nextPage,
+    previousPage,
+    state: { pageIndex }
   } = useTable(
     {
       columns,
-      data
+      data,
+      initialState: { pageSize: 10 }
     },
-    useSortBy
+    usePagination
   );
 
   return (
     <div className="Table">
-      <TableControls />
+      <TableControls pageCount={pageCount} page={pageIndex} canPrevious={canPreviousPage} onPrev={previousPage} canNext={canNextPage} onNext={nextPage} />
       <table className="Table__table" {...getTableProps()}>
         <thead className="Table__thead">
           {headerGroups.map(headerGroup => (
             <tr className="Table__tr" {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th className="Table__th" {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render("Header")}</th>
+                <th className="Table__th" {...column.getHeaderProps()}>{column.render("Header")}</th>
               ))}
             </tr>
           ))}
         </thead>
         <tbody className="Table__tbody" {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr className="Table__tr" {...row.getRowProps()}>

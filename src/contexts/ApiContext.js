@@ -39,11 +39,13 @@ export const ApiProvider = ({ children }) => {
         },
         {
           Header: 'Height',
-          accessor: 'appearance.height'
+          accessor: 'appearance.height',
+          Cell: ({ cell: { value } }) => <Badge values={value} />
         },
         {
           Header: 'Weight',
-          accessor: 'appearance.weight'
+          accessor: 'appearance.weight',
+          Cell: ({ cell: { value } }) => <Badge values={value} />
         },
         // {
         //   Header: 'Affiliations',

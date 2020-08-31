@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+html {
+  min-height: 100vh;
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
 }

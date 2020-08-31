@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { Input, Button } from '../components/Utils';
 import Table from '../components/Table';
 
@@ -42,11 +42,11 @@ const SearchHeader = React.memo(function SearchHeader() {
 });
 
 const Search = () => {
-  const { results, columns } = useContext(ApiContext);
+  const { searched, results, columns } = useContext(ApiContext);
   return (
     <div className="Search">
       <SearchHeader />
-      <Table columns={columns} data={results} />
+      {searched ? <Table columns={columns} data={results} /> : <h2>Type something in the search bar to get started!</h2>}
     </div>
   );
 };

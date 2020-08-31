@@ -1,23 +1,22 @@
 .Table__table {
   text-align: left;
   width: 100%;
-  border-collapse: collapse;
+  padding: 0 2rem;
 }
 
 .Table__th {
-  padding: 2rem;
+  padding: 1rem .2rem;
   color: #8A8888;
   font-weight: 900;
-}
-
-.Table__tr {
-  border-top: 1px solid #C6C7C9;
+  margin: 0;
 }
 
 .Table__td {
-  padding: 2rem;
+  padding: .6rem .2rem;
   color: #ADADAD;
   font-weight: 500;
+  margin: 0;
+  border-top: 1px solid #C6C7C9;
 }
 
 .TableControls {
@@ -25,7 +24,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: .2rem 2rem;
   background: #F4F5F7;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -52,6 +51,11 @@
   opacity: 0.8;
 }
 
+.TableControls__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .prev {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -60,6 +64,22 @@
 .next {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media screen and (max-width: 760px) {
+  .Table__table {
+    padding: 0 .5rem;
+  }
+
+  .Table__th, .Table__td {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .Table__th, .Table__td {
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 350px) {

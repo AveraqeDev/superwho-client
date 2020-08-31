@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import Table from '../components/Table';
 
 import { UserContext } from '../contexts/UserContext';

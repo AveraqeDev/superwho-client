@@ -16,12 +16,6 @@
   font-weight: bold;
 }
 
-@media screen and (max-width: 900px) {
-  .Favorites {
-    margin-left: 20%;
-  }
-}
-
 @media screen and (max-width: 760px) {
   .Favorites {
     margin-left: 0;

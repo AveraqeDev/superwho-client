@@ -3,12 +3,6 @@
   padding: .5rem;
 }
 
-@media screen and (max-width: 900px) {
-  .Hero {
-    margin-left: 20%;
-  }
-}
-
 @media screen and (max-width: 760px) {
   .Hero {
     margin-left: 0;
