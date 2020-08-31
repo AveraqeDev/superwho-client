@@ -1,5 +1,23 @@
-.Table > h1 {
-  padding: 0 2rem;
+.Table__table {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Table__th {
+  padding: 2rem;
+  color: #8A8888;
+  font-weight: 900;
+}
+
+.Table__tr {
+  border-top: 1px solid #C6C7C9;
+}
+
+.Table__td {
+  padding: 2rem;
+  color: #ADADAD;
+  font-weight: 500;
 }
 
 .TableControls {

@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Table from '../components/Table';
 
 import { UserContext } from '../contexts/UserContext';
 
 import '../styles/Favorites.css';
+import { ApiContext } from '../contexts/ApiContext';
 
 const FavoritesHeader = React.memo(function FavoritesHeader() {
   return (
@@ -15,10 +16,11 @@ const FavoritesHeader = React.memo(function FavoritesHeader() {
 
 const Favorites = () => {
   const { favorites } = useContext(UserContext);
+  const { columns } = useContext(ApiContext);
   return (
     <div className="Favorites">
       <FavoritesHeader />
-      <Table data={favorites} />
+      <Table columns={columns} data={favorites} />
     </div>
   );
 };
