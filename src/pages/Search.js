@@ -14,6 +14,7 @@ const SearchHeader = React.memo(function SearchHeader() {
     e.preventDefault();
     const { search } = e.target;
     setError(null);
+    setResults([]);
     setSearched(true);
     setTerm(search.value);
     HeroApiService.searchForHero(search.value)
@@ -42,11 +43,18 @@ const SearchHeader = React.memo(function SearchHeader() {
 });
 
 const Search = () => {
-  const { searched, results, columns } = useContext(ApiContext);
+  const { searched, results, columns, error } = useContext(ApiContext);
   return (
     <div className="Search">
       <SearchHeader />
-      {searched ? <Table columns={columns} data={results} /> : <h2>Type something in the search bar to get started!</h2>}
+      {!error 
+        ? 
+          (searched 
+            ? <Table columns={columns} data={results} /> 
+            : <h2>Type something in the search box above to get started!</h2>
+          ) 
+        : <h2>{error.error}</h2>
+      }
     </div>
   );
 };

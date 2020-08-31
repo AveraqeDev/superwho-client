@@ -15,12 +15,19 @@ const FavoritesHeader = React.memo(function FavoritesHeader() {
 });
 
 const Favorites = () => {
-  const { favorites } = useContext(UserContext);
+  const { favorites, error } = useContext(UserContext);
   const { columns } = useContext(ApiContext);
   return (
     <div className="Favorites">
       <FavoritesHeader />
-      <Table columns={columns} data={favorites} />
+      {!error 
+        ? 
+          (favorites.length > 0 
+            ? <Table columns={columns} data={favorites} /> 
+            : <h2>Looks like you don't have any favorites!</h2>
+          ) 
+        : <h2>{error.error}</h2>
+      }
     </div>
   );
 };

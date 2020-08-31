@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from './Loader';
 import { useTable, usePagination } from 'react-table';
 
 import '../styles/Table.css';
@@ -56,18 +57,23 @@ const Table = ({ columns, data }) => {
             </tr>
           ))}
         </thead>
-        <tbody className="Table__tbody" {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr className="Table__tr" {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return <td className="Table__td" {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
+        {data.length <= 0 
+          ? <Loader />
+          : (
+            <tbody className="Table__tbody" {...getTableBodyProps()}>
+              {page.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr className="Table__tr" {...row.getRowProps()}>
+                    {row.cells.map(cell => {
+                      return <td className="Table__td" {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          )
+        }
       </table>
     </div>
     </>

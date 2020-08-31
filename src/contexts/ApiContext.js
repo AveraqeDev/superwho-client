@@ -17,7 +17,7 @@ export const ApiProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
   const [term, setTerm] = useState('');
-  const [error, setError] = useState({});
+  const [error, setError] = useState();
 
   const columns = useMemo(
     () => [
