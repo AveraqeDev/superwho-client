@@ -50,7 +50,6 @@ const App = () => {
               path='/profile'
               component={Profile}
             />
-
           </Switch>
         </ErrorBoundary>
       </main>

@@ -126,8 +126,7 @@ const NavBar = (props) => {
 
   if(windowWidth <= 760) {
     return (
-      <nav className="NavBar">
-        <Burger open={navOpen} setOpen={setNavOpen} />
+      <>
         <CSSTransition
           in={navOpen}
           timeout={300}
@@ -136,24 +135,29 @@ const NavBar = (props) => {
         >
           <Menu open={navOpen} setOpen={setNavOpen} onLogout={onLogout} location={props.location} />
         </CSSTransition>
-        <Branding />
-      </nav>
+        <nav className="NavBar">
+          <Burger open={navOpen} setOpen={setNavOpen} />
+          <Branding />
+        </nav>
+      </>
     );
   } else {
     return (
-      <nav className="NavBar">
+      <>
         <Sidebar location={props.location} />
-        <Branding />
-        <UserAccount open={accountOpen} setOpen={setAccountOpen} />
-        <CSSTransition
-          in={accountOpen}
-          timeout={300}
-          classNames='AccountMenu'
-          unmountOnExit
-        >
-          <UserAccountMenu open={accountOpen} setOpen={setAccountOpen} onLogout={onLogout} />
-        </CSSTransition>
-      </nav>
+        <nav className="NavBar">
+          <Branding />
+          <UserAccount open={accountOpen} setOpen={setAccountOpen} />
+          <CSSTransition
+            in={accountOpen}
+            timeout={300}
+            classNames='AccountMenu'
+            unmountOnExit
+          >
+            <UserAccountMenu open={accountOpen} setOpen={setAccountOpen} onLogout={onLogout} />
+          </CSSTransition>
+        </nav>
+      </>
     )
   }
 };
