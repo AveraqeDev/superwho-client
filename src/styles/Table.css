@@ -1,3 +1,11 @@
+.Table {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 190px);
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
 .Table__table {
   text-align: left;
   width: 100%;
@@ -9,6 +17,11 @@
   color: #8A8888;
   font-weight: 900;
   margin: 0;
+  position: sticky;
+  top: 0px;
+  background: #ffffff;
+  border-bottom: 1px solid #C6C7C9;
+  z-index: 0;
 }
 
 .Table__td {
@@ -16,7 +29,7 @@
   color: #ADADAD;
   font-weight: 500;
   margin: 0;
-  border-top: 1px solid #C6C7C9;
+  border-bottom: 1px solid #C6C7C9;
 }
 
 .TableControls {
@@ -73,12 +86,6 @@
 
   .Table__th, .Table__td {
     text-align: center;
-  }
-}
-
-@media screen and (max-width: 435px) {
-  .Table__th, .Table__td {
-    padding: 0;
   }
 }
 

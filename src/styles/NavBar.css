@@ -168,7 +168,8 @@
   left: 0;
   width: 12%;
   min-width: 130px;
-  height: 100%;
+  height: calc(100% - 65px);
+  z-index: 1;
 }
 
 .Menu__Link {

@@ -43,8 +43,9 @@ const Table = ({ columns, data }) => {
   );
 
   return (
+    <>
+    <TableControls pageCount={pageCount} page={pageIndex} canPrevious={canPreviousPage} onPrev={previousPage} canNext={canNextPage} onNext={nextPage} />
     <div className="Table">
-      <TableControls pageCount={pageCount} page={pageIndex} canPrevious={canPreviousPage} onPrev={previousPage} canNext={canNextPage} onNext={nextPage} />
       <table className="Table__table" {...getTableProps()}>
         <thead className="Table__thead">
           {headerGroups.map(headerGroup => (
@@ -69,6 +70,7 @@ const Table = ({ columns, data }) => {
         </tbody>
       </table>
     </div>
+    </>
   )
 };
 
