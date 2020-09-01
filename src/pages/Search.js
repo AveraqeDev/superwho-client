@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Input, Button } from '../components/Utils';
 import Table from '../components/Table';
 
@@ -6,6 +6,7 @@ import { ApiContext } from '../contexts/ApiContext';
 import HeroApiService from '../services/hero-api-service';
 
 import '../styles/Search.css';
+import config from '../config';
 
 const SearchHeader = React.memo(function SearchHeader() {
   const { setResults, searched, setSearched, term, setTerm, setError } = useContext(ApiContext);
@@ -43,7 +44,8 @@ const SearchHeader = React.memo(function SearchHeader() {
 });
 
 const Search = () => {
-  const { searched, results, columns, error } = useContext(ApiContext);
+  const { searched, results, error } = useContext(ApiContext);
+  const columns = useMemo(() => config.COLUMNS, []);
   return (
     <div className="Search">
       <SearchHeader />

@@ -11,6 +11,7 @@ export const UserContext = createContext({
   setFavorites: () => {},
   addFavorite: () => {},
   removeFavorite: () => {},
+  hasFavorite: () => {},
   setError: () => {}
 });
 
@@ -20,37 +21,43 @@ export const UserProvider = ({ children }) => {
   const [error, setError] = useState();
 
   useEffect(() => {
-
-    const fetchFavorites = async () => {
-      try {
-        const favs = UserApiService.getUserFavorites(user.id);
-        setFavorites(favs);
-      } catch (error) {
-        setError(error);
-      }
-    };
-
     if(!user && TokenService.hasAuthToken()) {
       setUser(TokenService.parseToken(TokenService.getAuthToken()));
-      fetchFavorites();
+      UserApiService.getUserFavorites().then(favs => {
+        setFavorites(favs);
+        console.log('favs', favs);
+        console.log('favorites', favorites);
+      }).catch(setError);
     }
 
-    if(!favorites && (!user && !TokenService.hasAuthToken())) {
-      setFavorites([]);
+    if(user && !TokenService.hasAuthToken()) {
+      setUser(null);
     }
   }, [user, favorites]);
 
-  const addFavorite = async (heroId) => {
-    const hero = await HeroApiService.getById(heroId);
-    setFavorites([...favorites, hero]);
-    UserApiService.addUserFavorite(user.id, heroId)
+  const addFavorite = (heroId) => {
+    HeroApiService.getById(heroId)
+      .then(hero => {
+        setFavorites([...favorites, hero]);
+        UserApiService.addUserFavorite(heroId)
+      })
       .catch(setError);
   }
 
   const removeFavorite = (heroId) => {
     setFavorites(favorites.map(fav => fav.id !== heroId));
-    UserApiService.removeUserFavorite(user.id, heroId)
+    UserApiService.removeUserFavorite(heroId)
       .catch(setError);
+  }
+
+  const hasFavorite = (heroId) => {
+    for(let i = 0; i < favorites.length; i++) {
+      let hero = favorites[i];
+      if(hero.id === heroId) {
+        return true;
+      }
+    }
+    return false;
   }
 
   const value = {
@@ -61,6 +68,7 @@ export const UserProvider = ({ children }) => {
     setFavorites,
     addFavorite,
     removeFavorite,
+    hasFavorite,
     setError
   };
 

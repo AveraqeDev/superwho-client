@@ -104,7 +104,7 @@ const NavBar = (props) => {
     setWindowWidth(window.innerWidth);
   };
 
-  const { setUser } = useContext(UserContext);
+  const { setUser, setFavorites } = useContext(UserContext);
 
   useEffect(() => {
     resizeWindow();
@@ -117,6 +117,7 @@ const NavBar = (props) => {
     setAccountOpen(false);
     TokenService.clearAuthToken();
     setUser(null);
+    setFavorites([]);
     props.history.push('/');
   };
 

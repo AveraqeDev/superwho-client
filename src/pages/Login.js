@@ -84,7 +84,7 @@ const LoginForm = React.memo(function LoginForm( { onLogin }) {
 
 const Login = (props) => {
   const [windowWidth, setWindowWidth] = useState(0);
-  const { setUser } = useContext(UserContext);
+  const { setUser, setFavorites, setError } = useContext(UserContext);
   const resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -101,6 +101,9 @@ const Login = (props) => {
 
     TokenService.saveAuthToken(token);
     setUser(TokenService.parseToken(token));
+    UserApiService.getUserFavorites()
+      .then(setFavorites)
+      .catch(setError);
 
     history.push(destination);
   }

@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Table from '../components/Table';
 
 import { UserContext } from '../contexts/UserContext';
 
+import config from '../config';
+
 import '../styles/Favorites.css';
-import { ApiContext } from '../contexts/ApiContext';
 
 const FavoritesHeader = React.memo(function FavoritesHeader() {
   return (
@@ -16,7 +17,7 @@ const FavoritesHeader = React.memo(function FavoritesHeader() {
 
 const Favorites = () => {
   const { favorites, error } = useContext(UserContext);
-  const { columns } = useContext(ApiContext);
+  const columns = useMemo(() => config.COLUMNS, []);
   return (
     <div className="Favorites">
       <FavoritesHeader />
@@ -26,7 +27,7 @@ const Favorites = () => {
             ? <Table columns={columns} data={favorites} /> 
             : <h2>Looks like you don't have any favorites!</h2>
           ) 
-        : <h2>{error.error}</h2>
+        : <h2>{error.message}</h2>
       }
     </div>
   );

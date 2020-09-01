@@ -1,5 +1,4 @@
-import React, { createContext, useState, useMemo } from 'react';
-import Badge from '../components/Badge';
+import React, { createContext, useState } from 'react';
 
 export const ApiContext = createContext({
   results: [],
@@ -19,39 +18,8 @@ export const ApiProvider = ({ children }) => {
   const [term, setTerm] = useState('');
   const [error, setError] = useState();
 
-  const columns = useMemo(
-    () => [
-        {
-          Header: 'Name',
-          accessor: 'name'
-        },
-        {
-          Header: 'Alignment',
-          accessor: 'biography.alignment'
-        },
-        {
-          Header: 'Race',
-          accessor: 'appearance.race'
-        },
-        {
-          Header: 'Gender',
-          accessor: 'appearance.gender'
-        },
-        {
-          Header: 'Height',
-          accessor: 'appearance.height',
-          Cell: ({ cell: { value } }) => <Badge values={value} />
-        },
-        {
-          Header: 'Weight',
-          accessor: 'appearance.weight',
-          Cell: ({ cell: { value } }) => <Badge values={value} />
-        }
-    ], []);
-
   const value = {
     results,
-    columns,
     searched,
     term,
     error,
