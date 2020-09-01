@@ -4,7 +4,7 @@ import { useTable, usePagination, useSortBy } from 'react-table';
 
 import '../styles/Table.css';
 
-const TableControls = ({ pageCount, page, canPrevious, onPrev, canNext, onNext }) => {
+export const TableControls = ({ pageCount, page, canPrevious, onPrev, canNext, onNext }) => {
   return (
     <div className="TableControls">
       <p>Page {page + 1} of {pageCount}</p>

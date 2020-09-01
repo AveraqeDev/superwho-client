@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Utils <Button /> renders the UI as expected 1`] = `
+<button
+  className="Button "
+>
+  Test Button
+</button>
+`;
+
+exports[`Utils <Input /> renders the UI as expected 1`] = `
+<input
+  className="Input "
+  id="test"
+  name="test"
+  placeholder="This is a test"
+  required={true}
+/>
+`;

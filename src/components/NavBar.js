@@ -7,13 +7,13 @@ import { UserContext } from '../contexts/UserContext';
 
 import '../styles/NavBar.css';
 
-const Branding = React.memo(function Branding() {
+export const Branding = React.memo(function Branding() {
   return (
     <Link className="Branding" to="/">SuperWho?</Link>
   );
 });
 
-const Burger = React.memo(function Burger({ open, setOpen }) {
+export const Burger = React.memo(function Burger({ open, setOpen }) {
   return (
     <button
     aria-label='Burger Menu'
@@ -27,7 +27,7 @@ const Burger = React.memo(function Burger({ open, setOpen }) {
   )
 });
 
-const Menu = React.memo(function Menu({ open, setOpen, onLogout, location }) {
+export const Menu = React.memo(function Menu({ open, setOpen, onLogout, location }) {
   const { pathname } = location;
 
   const { user } = useContext(UserContext);
@@ -51,7 +51,7 @@ const Menu = React.memo(function Menu({ open, setOpen, onLogout, location }) {
   );
 });
 
-const UserAccount = React.memo(function UserAccount({ open, setOpen }) {
+export const UserAccount = React.memo(function UserAccount({ open, setOpen }) {
   const { user } = useContext(UserContext);
 
   if(user) {
@@ -70,7 +70,7 @@ const UserAccount = React.memo(function UserAccount({ open, setOpen }) {
   }
 });
 
-const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOpen, onLogout }) {
+export const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOpen, onLogout }) {
   return (
     <div className="UserAccountMenu">
       <Link className="UserAccountMenu__Link" to="/profile" onClick={() => setOpen(!open)}>Profile</Link>
@@ -80,8 +80,8 @@ const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOpen, onL
   );
 });
 
-const Sidebar = React.memo(function Sidebar(props) {
-  const { pathname } = props.location;
+export const Sidebar = React.memo(function Sidebar({ location }) {
+  const { pathname } = location;
 
   const { user } = useContext(UserContext);
 

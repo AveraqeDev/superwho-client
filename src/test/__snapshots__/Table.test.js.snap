@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table <Table /> renders the UI as expected 1`] = `
+Array [
+  <div
+    className="TableControls"
+  >
+    <p>
+      Page 
+      1
+       of 
+      1
+    </p>
+    <div
+      className="PageButtons"
+    >
+      <button
+        className="TableControls__button prev"
+        disabled={true}
+        onClick={[Function]}
+      >
+        &lt; Prev
+      </button>
+      <button
+        className="TableControls__button next"
+        disabled={true}
+        onClick={[Function]}
+      >
+        Next &gt;
+      </button>
+    </div>
+  </div>,
+  "",
+  <div
+    className="Table"
+  >
+    <table
+      className="Table__table"
+      role="table"
+    >
+      <thead
+        className="Table__thead"
+      >
+        <tr
+          className="Table__tr"
+          role="row"
+        >
+          <th
+            className="Table__th"
+            colSpan={1}
+            onClick={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+            title="Toggle SortBy"
+          >
+            Name
+            <span
+              className="SortArrow"
+            >
+               ▲
+            </span>
+          </th>
+          <th
+            className="Table__th"
+            colSpan={1}
+            onClick={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+            title="Toggle SortBy"
+          >
+            Alignment
+            <span
+              className="SortArrow"
+            >
+              
+            </span>
+          </th>
+          <th
+            className="Table__th"
+            colSpan={1}
+            onClick={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+            title="Toggle SortBy"
+          >
+            Race
+            <span
+              className="SortArrow"
+            >
+              
+            </span>
+          </th>
+          <th
+            className="Table__th"
+            colSpan={1}
+            onClick={[Function]}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+            title="Toggle SortBy"
+          >
+            Gender
+            <span
+              className="SortArrow"
+            >
+              
+            </span>
+          </th>
+          <th
+            className="Table__th"
+            colSpan={1}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": undefined,
+              }
+            }
+          >
+            Height
+            <span
+              className="SortArrow"
+            >
+              
+            </span>
+          </th>
+          <th
+            className="Table__th"
+            colSpan={1}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": undefined,
+              }
+            }
+          >
+            Weight
+            <span
+              className="SortArrow"
+            >
+              
+            </span>
+          </th>
+          <th
+            className="Table__th"
+            colSpan={1}
+            role="columnheader"
+            style={
+              Object {
+                "cursor": undefined,
+              }
+            }
+          >
+            
+            <span
+              className="SortArrow"
+            >
+              
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className="Table__tbody"
+        role="rowgroup"
+      >
+        <tr
+          className="Table__tr"
+          role="row"
+        >
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            A-Bomb
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            good
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            Human
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            Male
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            <span
+              className="badge"
+            >
+              6'8
+            </span>
+            <span
+              className="badge"
+            >
+              203 cm
+            </span>
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            <span
+              className="badge"
+            >
+              980 lb
+            </span>
+            <span
+              className="badge"
+            >
+              441 kg
+            </span>
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            <span
+              className="favme"
+              onAnimationEnd={[Function]}
+              onClick={[Function]}
+            >
+              ♥
+            </span>
+          </td>
+        </tr>
+        <tr
+          className="Table__tr"
+          role="row"
+        >
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            Abe Sapien
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            good
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            Icthyo Sapien
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            Male
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            <span
+              className="badge"
+            >
+              6'3
+            </span>
+            <span
+              className="badge"
+            >
+              191 cm
+            </span>
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            <span
+              className="badge"
+            >
+              145 lb
+            </span>
+            <span
+              className="badge"
+            >
+              65 kg
+            </span>
+          </td>
+          <td
+            className="Table__td"
+            role="cell"
+          >
+            <span
+              className="favme"
+              onAnimationEnd={[Function]}
+              onClick={[Function]}
+            >
+              ♥
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>,
+]
+`;
+
+exports[`Table <TableControls /> renders the UI as expected 1`] = `
+<div
+  className="TableControls"
+>
+  <p>
+    Page 
+    3
+     of 
+    3
+  </p>
+  <div
+    className="PageButtons"
+  >
+    <button
+      className="TableControls__button prev"
+      disabled={false}
+      onClick={[Function]}
+    >
+      &lt; Prev
+    </button>
+    <button
+      className="TableControls__button next"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Next &gt;
+    </button>
+  </div>
+</div>
+`;

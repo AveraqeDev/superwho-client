@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login <Login /> renders the UI as expected 1`] = `
+<div
+  className="Login"
+>
+  <form
+    className="LoginForm"
+    onSubmit={[Function]}
+  >
+    <h2
+      className="Header"
+    >
+      Log In
+    </h2>
+    <div
+      role="alert"
+    />
+    <div
+      className="LoginForm__username-container"
+    >
+      <label
+        htmlFor="LoginForm__username"
+      >
+        Username
+      </label>
+      <input
+        className="Input "
+        id="LoginForm__username"
+        name="username"
+        placeholder="Enter Your Username"
+        required={true}
+      />
+    </div>
+    <div
+      className="LoginForm__password-container"
+    >
+      <label
+        htmlFor="LoginForm__password"
+      >
+        Password
+      </label>
+      <input
+        className="Input "
+        id="LoginForm__password"
+        name="password"
+        placeholder="Enter Your Password"
+        required={true}
+        type="password"
+      />
+    </div>
+    <button
+      className="Button LoginForm__button"
+      type="submit"
+    >
+      Login
+    </button>
+    <p
+      className="LoginForm__signup"
+    >
+      Don't have an account? 
+      <a
+        className="LoginForm__signup-link"
+        href="/register"
+        onClick={[Function]}
+      >
+        Sign Up
+      </a>
+    </p>
+  </form>
+</div>
+`;
+
+exports[`Login <LoginForm /> renders the UI as expected 1`] = `
+<form
+  className="LoginForm"
+  onSubmit={[Function]}
+>
+  <h2
+    className="Header"
+  >
+    Log In
+  </h2>
+  <div
+    role="alert"
+  />
+  <div
+    className="LoginForm__username-container"
+  >
+    <label
+      htmlFor="LoginForm__username"
+    >
+      Username
+    </label>
+    <input
+      className="Input "
+      id="LoginForm__username"
+      name="username"
+      placeholder="Enter Your Username"
+      required={true}
+    />
+  </div>
+  <div
+    className="LoginForm__password-container"
+  >
+    <label
+      htmlFor="LoginForm__password"
+    >
+      Password
+    </label>
+    <input
+      className="Input "
+      id="LoginForm__password"
+      name="password"
+      placeholder="Enter Your Password"
+      required={true}
+      type="password"
+    />
+  </div>
+  <button
+    className="Button LoginForm__button"
+    type="submit"
+  >
+    Login
+  </button>
+  <p
+    className="LoginForm__signup"
+  >
+    Don't have an account? 
+    <a
+      className="LoginForm__signup-link"
+      href="/register"
+      onClick={[Function]}
+    >
+      Sign Up
+    </a>
+  </p>
+</form>
+`;
+
+exports[`Login <SidePanel /> renders the UI as expected 1`] = `
+<div
+  className="SidePanel"
+>
+  <h1>
+    SuperWho?
+  </h1>
+  <div
+    className="SidePanel__message"
+  >
+    <h2>
+      Welcome back!
+    </h2>
+    <p>
+      We are glad to see you again!  Please login using your username and password!
+    </p>
+  </div>
+</div>
+`;

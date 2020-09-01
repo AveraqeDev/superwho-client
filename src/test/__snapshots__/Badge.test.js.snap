@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Badge /> renders the UI as expected 1`] = `
+Array [
+  <span
+    className="badge"
+  >
+    Test1
+  </span>,
+  <span
+    className="badge"
+  >
+    Test2
+  </span>,
+  <span
+    className="badge"
+  >
+    Test3
+  </span>,
+  <span
+    className="badge"
+  >
+    Test4
+  </span>,
+  <span
+    className="badge"
+  >
+    Test5
+  </span>,
+]
+`;

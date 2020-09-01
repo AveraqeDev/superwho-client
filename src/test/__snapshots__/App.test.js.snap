@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <header>
+    <nav
+      className="NavBar"
+    >
+      <button
+        aria-label="Burger Menu"
+        className="Burger"
+        onClick={[Function]}
+      >
+        <div
+          className=""
+        />
+        <div
+          className=""
+        />
+        <div
+          className=""
+        />
+      </button>
+      <a
+        className="Branding"
+        href="/"
+        onClick={[Function]}
+      >
+        SuperWho?
+      </a>
+    </nav>
+  </header>
+  <main>
+    <div
+      className="Search"
+    >
+      <div
+        className="SearchHeader"
+      >
+        <h2>
+          Search   
+        </h2>
+        <form
+          className="SearchForm"
+          onSubmit={[Function]}
+        >
+          <input
+            className="Input "
+            id="SearchForm__term"
+            name="search"
+            placeholder="Search for a hero"
+            required={true}
+          />
+          <button
+            className="Button SearchForm__button"
+            type="submit"
+          >
+            &gt;
+          </button>
+        </form>
+      </div>
+      <h2 />
+    </div>
+  </main>
+</div>
+`;

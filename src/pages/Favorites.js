@@ -7,7 +7,7 @@ import config from '../config';
 
 import '../styles/Favorites.css';
 
-const FavoritesHeader = React.memo(function FavoritesHeader() {
+export const FavoritesHeader = React.memo(function FavoritesHeader() {
   return (
     <div className="FavoritesHeader">
       <h2>Favorites</h2>

@@ -8,7 +8,7 @@ import HeroApiService from '../services/hero-api-service';
 import '../styles/Search.css';
 import config from '../config';
 
-const SearchHeader = React.memo(function SearchHeader() {
+export const SearchHeader = React.memo(function SearchHeader() {
   const { setResults, searched, setSearched, term, setTerm, setError } = useContext(ApiContext);
 
   const onSubmit = (e) => {

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favorites <Favorites /> renders the UI as expected 1`] = `
+<div
+  className="Favorites"
+>
+  <div
+    className="FavoritesHeader"
+  >
+    <h2>
+      Favorites
+    </h2>
+  </div>
+  <h2 />
+</div>
+`;
+
+exports[`Favorites <FavoritesHeader /> renders the UI as expected 1`] = `
+<div
+  className="FavoritesHeader"
+>
+  <h2>
+    Favorites
+  </h2>
+</div>
+`;

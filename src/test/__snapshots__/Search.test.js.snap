@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search <Search /> renders the UI as expected 1`] = `
+<div
+  className="Search"
+>
+  <div
+    className="SearchHeader"
+  >
+    <h2>
+      Search   
+    </h2>
+    <form
+      className="SearchForm"
+      onSubmit={[Function]}
+    >
+      <input
+        className="Input "
+        id="SearchForm__term"
+        name="search"
+        placeholder="Search for a hero"
+        required={true}
+      />
+      <button
+        className="Button SearchForm__button"
+        type="submit"
+      >
+        &gt;
+      </button>
+    </form>
+  </div>
+  <h2 />
+</div>
+`;
+
+exports[`Search <SearchHeader /> renders the UI as expected 1`] = `
+<div
+  className="SearchHeader"
+>
+  <h2>
+    Search   
+  </h2>
+  <form
+    className="SearchForm"
+    onSubmit={[Function]}
+  >
+    <input
+      className="Input "
+      id="SearchForm__term"
+      name="search"
+      placeholder="Search for a hero"
+      required={true}
+    />
+    <button
+      className="Button SearchForm__button"
+      type="submit"
+    >
+      &gt;
+    </button>
+  </form>
+</div>
+`;

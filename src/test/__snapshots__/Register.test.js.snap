@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register <Register /> renders the UI as expected 1`] = `
+<div
+  className="Register"
+>
+  <form
+    className="RegisterForm"
+    onSubmit={[Function]}
+  >
+    <h2
+      className="Header"
+    >
+      Sign Up
+    </h2>
+    <div
+      role="alert"
+    />
+    <div
+      className="RegisterForm__username-container"
+    >
+      <label
+        htmlFor="RegisterForm__username"
+      >
+        Username
+      </label>
+      <input
+        className="Input "
+        id="RegisterForm__username"
+        name="username"
+        placeholder="Enter Your Username"
+        required={true}
+      />
+    </div>
+    <div
+      className="RegisterForm__password-container"
+    >
+      <label
+        htmlFor="RegisterForm__password"
+      >
+        Password
+      </label>
+      <input
+        className="Input "
+        id="RegisterForm__password"
+        name="password"
+        placeholder="Enter Your Password"
+        required={true}
+        type="password"
+      />
+    </div>
+    <div
+      className="RegisterForm__confirmPassword-container"
+    >
+      <label
+        htmlFor="RegisterForm__confirmPassword"
+      >
+        Confirm Password
+      </label>
+      <input
+        className="Input "
+        id="RegisterForm__confirmPassword"
+        name="confirmPassword"
+        placeholder="Re-enter Your Password"
+        required={true}
+        type="password"
+      />
+    </div>
+    <button
+      className="Button RegisterForm__button"
+      type="submit"
+    >
+      Sign Up
+    </button>
+    <p
+      className="RegisterForm__login"
+    >
+      Already have an account? 
+      <a
+        className="RegisterForm__login-link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Log In
+      </a>
+    </p>
+  </form>
+</div>
+`;
+
+exports[`Register <RegisterForm /> renders the UI as expected 1`] = `
+<form
+  className="RegisterForm"
+  onSubmit={[Function]}
+>
+  <h2
+    className="Header"
+  >
+    Sign Up
+  </h2>
+  <div
+    role="alert"
+  />
+  <div
+    className="RegisterForm__username-container"
+  >
+    <label
+      htmlFor="RegisterForm__username"
+    >
+      Username
+    </label>
+    <input
+      className="Input "
+      id="RegisterForm__username"
+      name="username"
+      placeholder="Enter Your Username"
+      required={true}
+    />
+  </div>
+  <div
+    className="RegisterForm__password-container"
+  >
+    <label
+      htmlFor="RegisterForm__password"
+    >
+      Password
+    </label>
+    <input
+      className="Input "
+      id="RegisterForm__password"
+      name="password"
+      placeholder="Enter Your Password"
+      required={true}
+      type="password"
+    />
+  </div>
+  <div
+    className="RegisterForm__confirmPassword-container"
+  >
+    <label
+      htmlFor="RegisterForm__confirmPassword"
+    >
+      Confirm Password
+    </label>
+    <input
+      className="Input "
+      id="RegisterForm__confirmPassword"
+      name="confirmPassword"
+      placeholder="Re-enter Your Password"
+      required={true}
+      type="password"
+    />
+  </div>
+  <button
+    className="Button RegisterForm__button"
+    type="submit"
+  >
+    Sign Up
+  </button>
+  <p
+    className="RegisterForm__login"
+  >
+    Already have an account? 
+    <a
+      className="RegisterForm__login-link"
+      href="/login"
+      onClick={[Function]}
+    >
+      Log In
+    </a>
+  </p>
+</form>
+`;
+
+exports[`Register <SidePanel /> renders the UI as expected 1`] = `
+<div
+  className="SidePanel"
+>
+  <h1>
+    SuperWho?
+  </h1>
+  <div
+    className="SidePanel__message"
+  >
+    <h2>
+      Hello friend!
+    </h2>
+    <p>
+      To get started, please create a username and password!
+    </p>
+  </div>
+</div>
+`;

@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar <Branding /> renders the UI as expected 1`] = `
+<a
+  className="Branding"
+  href="/"
+  onClick={[Function]}
+>
+  SuperWho?
+</a>
+`;
+
+exports[`NavBar <Burger /> renders the UI as expected 1`] = `
+<button
+  aria-label="Burger Menu"
+  className="Burger"
+  onClick={[Function]}
+>
+  <div
+    className=""
+  />
+  <div
+    className=""
+  />
+  <div
+    className=""
+  />
+</button>
+`;
+
+exports[`NavBar <Menu /> renders the UI as expected 1`] = `
+<div
+  className="Menu"
+>
+  <a
+    className="Menu__Link"
+    href="/"
+    onClick={[Function]}
+  >
+    Search
+  </a>
+  <a
+    className="Menu__Link"
+    href="/favorites"
+    onClick={[Function]}
+  >
+    Favorites
+  </a>
+  <a
+    className="Menu__Link"
+    href="/profile"
+    onClick={[Function]}
+  >
+    Profile
+  </a>
+  <button
+    className="Menu__Link"
+    onClick={[Function]}
+  >
+    Logout
+  </button>
+</div>
+`;
+
+exports[`NavBar <NavBar /> renders the UI as expected 1`] = `
+<nav
+  className="NavBar"
+>
+  <button
+    aria-label="Burger Menu"
+    className="Burger"
+    onClick={[Function]}
+  >
+    <div
+      className=""
+    />
+    <div
+      className=""
+    />
+    <div
+      className=""
+    />
+  </button>
+  <a
+    className="Branding"
+    href="/"
+    onClick={[Function]}
+  >
+    SuperWho?
+  </a>
+</nav>
+`;
+
+exports[`NavBar <Sidebar /> renders the UI as expected 1`] = `
+<div
+  className="Menu"
+>
+  <a
+    className="Menu__Link"
+    href="/"
+    onClick={[Function]}
+  >
+    Search
+  </a>
+  <a
+    className="Menu__Link"
+    href="/favorites"
+    onClick={[Function]}
+  >
+    Favorites
+  </a>
+</div>
+`;
+
+exports[`NavBar <UserAccount /> renders the UI as expected 1`] = `
+<div
+  className="UserAccount"
+>
+  <p
+    onClick={[Function]}
+  >
+     
+    <span
+      className="DownArrow"
+    >
+      ▼
+    </span>
+  </p>
+</div>
+`;
+
+exports[`NavBar <UserAccountMenu /> renders the UI as expected 1`] = `
+<div
+  className="UserAccountMenu"
+>
+  <a
+    className="UserAccountMenu__Link"
+    href="/profile"
+    onClick={[Function]}
+  >
+    Profile
+  </a>
+  <hr
+    className="seperator"
+  />
+  <button
+    className="UserAccountMenu__Link"
+    onClick={[Function]}
+  >
+    Logout
+  </button>
+</div>
+`;

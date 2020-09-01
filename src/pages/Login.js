@@ -9,7 +9,7 @@ import  UserApiService from '../services/user-api-service';
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
 
-const SidePanel = React.memo(function SidePanel() {
+export const SidePanel = React.memo(function SidePanel() {
   return (
     <div className='SidePanel'>
       <h1>SuperWho?</h1>
@@ -21,7 +21,7 @@ const SidePanel = React.memo(function SidePanel() {
   );
 });
 
-const LoginForm = React.memo(function LoginForm( { onLogin }) {
+export const LoginForm = React.memo(function LoginForm( { onLogin }) {
   const [error, setError] = useState(null);
   
   const onSubmit = e => {
