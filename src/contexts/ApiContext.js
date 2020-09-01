@@ -46,12 +46,7 @@ export const ApiProvider = ({ children }) => {
           Header: 'Weight',
           accessor: 'appearance.weight',
           Cell: ({ cell: { value } }) => <Badge values={value} />
-        },
-        // {
-        //   Header: 'Affiliations',
-        //   accessor: 'connections.group-affiliation',
-        //   Cell: ({ cell: { value } }) => <Badge values={value} />,
-        // }
+        }
     ], []);
 
   const value = {

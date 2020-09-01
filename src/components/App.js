@@ -11,8 +11,6 @@ import Register from '../pages/Register';
 
 import Search from '../pages/Search';
 import Favorites from '../pages/Favorites';
-import Profile from '../pages/Profile';
-import Hero from '../pages/Hero';
 
 const App = () => {
   return (
@@ -37,18 +35,10 @@ const App = () => {
               path='/'
               component={Search}
             />
-            <Route 
-              path='/superhero/:heroId'
-              component={Hero}
-            />
 
             <PrivateRoute 
               path='/favorites'
               component={Favorites}
-            />
-            <PrivateRoute 
-              path='/profile'
-              component={Profile}
             />
           </Switch>
         </ErrorBoundary>

@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import TokenService from '../services/token-service';
 import UserApiService from '../services/user-api-service';
+import HeroApiService from '../services/hero-api-service';
 
 export const UserContext = createContext({
   user: {},
@@ -39,9 +40,10 @@ export const UserProvider = ({ children }) => {
     }
   }, [user, favorites]);
 
-  const addFavorite = (hero) => {
+  const addFavorite = async (heroId) => {
+    const hero = await HeroApiService.getById(heroId);
     setFavorites([...favorites, hero]);
-    UserApiService.addUserFavorite(user.id, hero.id)
+    UserApiService.addUserFavorite(user.id, heroId)
       .catch(setError);
   }
 

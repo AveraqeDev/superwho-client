@@ -2,8 +2,8 @@ import TokenService from './token-service';
 import config from '../config';
 
 const UserApiService = {
-  getUserFavorites(id) {
-    return fetch(`${config.API_URL}/users/${id}/favorites`, {
+  getUserFavorites() {
+    return fetch(`${config.API_URL}/users/favorites`, {
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       }
@@ -15,8 +15,8 @@ const UserApiService = {
         );
   },
 
-  addUserFavorite(userId, hero) {
-    return fetch(`${config.API_URL}/users/${userId}/favorites`, {
+  addUserFavorite(hero) {
+    return fetch(`${config.API_URL}/users/favorites`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`,
@@ -31,8 +31,8 @@ const UserApiService = {
           );
   },
 
-  removeUserFavorite(userId, hero) {
-    return fetch(`${config.API_URL}/users/${userId}/favorites`, {
+  removeUserFavorite(hero) {
+    return fetch(`${config.API_URL}/users/favorites`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`,
