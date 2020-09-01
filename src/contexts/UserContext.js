@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
   }
 
   const removeFavorite = (heroId) => {
-    setFavorites(favorites.map(fav => fav.id !== heroId));
+    setFavorites(favorites.filter(fav => fav.id !== heroId));
     UserApiService.removeUserFavorite(heroId)
       .catch(setError);
   }

@@ -40,11 +40,11 @@ export const Menu = React.memo(function Menu({ open, setOpen, onLogout, location
         : ''
       }
       {(user)
-        ? <Link className={`Menu__Link${pathname === '/profile' ? ' Menu__Link-selected' : ''}`} to='/profile' onClick={() => setOpen(!open)}>Profile</Link>
+        ? <button className="Menu__Link" onClick={onLogout}>Logout</button>
         : <Link className={`Menu__Link${pathname === '/login' ? ' Menu__Link-selected' : ''}`} to='/login' onClick={() => setOpen(!open)}>Login</Link>
       }
       {(user)
-        ? <button className="Menu__Link" onClick={onLogout}>Logout</button>
+        ? ''
         : <Link className={`Menu__Link${pathname === '/register' ? ' Menu__Link-selected' : ''}`} to='/register' onClick={() => setOpen(!open)}>Register</Link>
       }
     </div>
@@ -73,8 +73,6 @@ export const UserAccount = React.memo(function UserAccount({ open, setOpen }) {
 export const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOpen, onLogout }) {
   return (
     <div className="UserAccountMenu">
-      <Link className="UserAccountMenu__Link" to="/profile" onClick={() => setOpen(!open)}>Profile</Link>
-      <hr className="seperator"></hr>
       <button className="UserAccountMenu__Link" onClick={onLogout}>Logout</button>
     </div>
   );
