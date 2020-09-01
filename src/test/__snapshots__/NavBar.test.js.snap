@@ -46,19 +46,13 @@ exports[`NavBar <Menu /> renders the UI as expected 1`] = `
   >
     Favorites
   </a>
-  <a
-    className="Menu__Link"
-    href="/profile"
-    onClick={[Function]}
-  >
-    Profile
-  </a>
   <button
     className="Menu__Link"
     onClick={[Function]}
   >
     Logout
   </button>
+  
 </div>
 `;
 
@@ -133,16 +127,6 @@ exports[`NavBar <UserAccountMenu /> renders the UI as expected 1`] = `
 <div
   className="UserAccountMenu"
 >
-  <a
-    className="UserAccountMenu__Link"
-    href="/profile"
-    onClick={[Function]}
-  >
-    Profile
-  </a>
-  <hr
-    className="seperator"
-  />
   <button
     className="UserAccountMenu__Link"
     onClick={[Function]}

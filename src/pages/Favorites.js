@@ -18,7 +18,6 @@ export const FavoritesHeader = React.memo(function FavoritesHeader() {
 const Favorites = () => {
   const { favorites, error } = useContext(UserContext);
   const columns = useMemo(() => config.COLUMNS, []);
-  console.dir(favorites);
   return (
     <div className="Favorites">
       <FavoritesHeader />
