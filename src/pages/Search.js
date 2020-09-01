@@ -27,7 +27,7 @@ const SearchHeader = React.memo(function SearchHeader() {
 
   return (
     <div className="SearchHeader">
-      <h2>Results{searched ? ` for "${term}"` : ''}</h2>
+      <h2>{searched ? `Results for "${term}"` : 'Search   '}</h2>
       <form className="SearchForm" onSubmit={onSubmit}>
         <Input 
           required
@@ -53,7 +53,12 @@ const Search = () => {
         ? 
           (searched 
             ? <Table columns={columns} data={results} /> 
-            : <h2>Type something in the search box above to get started!</h2>
+            : (
+              <div className="WelcomeText">
+                <h2>Welcome to SuperWho!</h2>
+                <p>To get started, type a keyword in the search box above!</p>
+              </div>
+            )
           ) 
         : <h2>{error.error}</h2>
       }

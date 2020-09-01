@@ -25,7 +25,12 @@ const Favorites = () => {
         ? 
           (favorites.length > 0 
             ? <Table columns={columns} data={favorites} /> 
-            : <h2>Looks like you don't have any favorites!</h2>
+            : (
+              <div className="DefaultText">
+                <h2>Uh Oh!</h2>
+                <p>Looks like you don't have any favorites yet! Add to your favorites by clicking the heart icon next to any row on the search page!</p>
+              </div>
+            )
           ) 
         : <h2>{error.message}</h2>
       }

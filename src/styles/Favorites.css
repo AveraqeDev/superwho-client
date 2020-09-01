@@ -1,5 +1,6 @@
 .Favorites {
   margin-left: 12%;
+  height: calc(100vh - 65px);
 }
 
 .FavoritesHeader {
@@ -11,9 +12,27 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.FavoritesHeader > h2 {
-  font-size: 30px;
-  font-weight: bold;
+.DefaultText {
+  position: relative;
+  top: calc(50% - 160px);
+  padding: 0 2rem;  
+}
+
+.DefaultText > h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.DefaultText > p {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media screen and (max-width: 1083px) {
+  .Favorites{
+     margin-left: 130px;
+  }
 }
 
 @media screen and (max-width: 760px) {

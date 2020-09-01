@@ -16,12 +16,17 @@
   padding: 1rem .2rem;
   color: #8A8888;
   font-weight: 900;
+  font-size: 20px;
   margin: 0;
   position: sticky;
   top: 0px;
   background: #ffffff;
   border-bottom: 1px solid #C6C7C9;
   z-index: 0;
+}
+
+.SortArrow {
+  font-size: 16px;
 }
 
 .Table__td {

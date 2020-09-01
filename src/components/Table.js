@@ -1,6 +1,6 @@
 import React from 'react';
 import Loader from './Loader';
-import { useTable, usePagination } from 'react-table';
+import { useTable, usePagination, useSortBy } from 'react-table';
 
 import '../styles/Table.css';
 
@@ -38,8 +38,17 @@ const Table = ({ columns, data }) => {
     {
       columns,
       data,
-      initialState: { pageSize: 10 }
+      disableMultiSort: true,
+      initialState: { 
+        pageSize: 10,
+        sortBy: [
+          {
+            id: 'name'
+          }
+        ]
+      }
     },
+    useSortBy,
     usePagination
   );
 
@@ -53,7 +62,17 @@ const Table = ({ columns, data }) => {
           {headerGroups.map(headerGroup => (
             <tr className="Table__tr" {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th className="Table__th" {...column.getHeaderProps()}>{column.render("Header")}</th>
+                <th className="Table__th" {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render("Header")}
+                  <span className="SortArrow">
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' ▼'
+                        : ' ▲'
+                      : ''
+                    }
+                  </span>
+                </th>
               ))}
             </tr>
           ))}
