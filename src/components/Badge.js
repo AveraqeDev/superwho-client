@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/Badge.css';
 
-const Badge = ({ values }) => {
+const Badge = ({ values = [] }) => {
   return (
     <>
       {values.map((value, idx) => {

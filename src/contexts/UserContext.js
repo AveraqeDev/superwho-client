@@ -25,8 +25,6 @@ export const UserProvider = ({ children }) => {
       setUser(TokenService.parseToken(TokenService.getAuthToken()));
       UserApiService.getUserFavorites().then(favs => {
         setFavorites(favs);
-        console.log('favs', favs);
-        console.log('favorites', favorites);
       }).catch(setError);
     }
 

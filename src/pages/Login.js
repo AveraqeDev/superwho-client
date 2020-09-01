@@ -102,7 +102,9 @@ const Login = (props) => {
     TokenService.saveAuthToken(token);
     setUser(TokenService.parseToken(token));
     UserApiService.getUserFavorites()
-      .then(setFavorites)
+      .then(favs => {
+        setFavorites(favs);
+      })
       .catch(setError);
 
     history.push(destination);
