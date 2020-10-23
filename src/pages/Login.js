@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import TokenService from '../services/token-service';
-import { UserContext } from '../contexts/UserContext';
 import { Input, Button } from '../components/Utils';
-
-import  UserApiService from '../services/user-api-service';
 
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
@@ -26,21 +22,8 @@ export const LoginForm = React.memo(function LoginForm( { onLogin }) {
   
   const onSubmit = e => {
     e.preventDefault();
-    const { username, password } = e.target;
 
     setError(null);
-    UserApiService.loginUser({
-      username: username.value,
-      password: password.value
-    })
-      .then(res => {
-        username.value = '';
-        password.value = '';
-        onLogin(res.authToken);
-      })
-      .catch(error => {
-        setError(error.error);
-      });
   };
   
   return (
@@ -84,7 +67,6 @@ export const LoginForm = React.memo(function LoginForm( { onLogin }) {
 
 const Login = (props) => {
   const [windowWidth, setWindowWidth] = useState(0);
-  const { setUser, setFavorites, setError } = useContext(UserContext);
   const resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -98,14 +80,6 @@ const Login = (props) => {
   const onLogin = token => {
     const { location, history } = props;
     const destination = (location.state || {}).from || '/';
-
-    TokenService.saveAuthToken(token);
-    setUser(TokenService.parseToken(token));
-    UserApiService.getUserFavorites()
-      .then(favs => {
-        setFavorites(favs);
-      })
-      .catch(setError);
 
     history.push(destination);
   }

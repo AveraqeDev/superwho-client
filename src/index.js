@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthStateProvider as Auth } from "./hooks/AuthState";
 import { FavoriteHeroProvider as Favorite } from "./hooks/FavoriteHeroState";
+import { SearchHeroProvider as Search } from './hooks/SearchHeroState';
 import App from './components/App';
 
 import './styles/index.css';
@@ -12,7 +13,9 @@ ReactDOM.render(
   <Router>
     <Auth>
       <Favorite>
-        <App />
+        <Search>
+          <App />
+        </Search>
       </Favorite>
     </Auth>
   </Router>,

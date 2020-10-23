@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-
-import TokenService from '../services/token-service';
-import { UserContext } from '../contexts/UserContext';
 
 import '../styles/NavBar.css';
 
@@ -30,12 +27,11 @@ export const Burger = React.memo(function Burger({ open, setOpen }) {
 export const Menu = React.memo(function Menu({ open, setOpen, onLogout, location }) {
   const { pathname } = location;
 
-  const { user } = useContext(UserContext);
-
   return (
     <div className="Menu">
       <Link className={`Menu__Link${pathname === '/' ? ' Menu__Link-selected' : ''}`} to='/' onClick={() => setOpen(!open)}>Search</Link>
-      {(user)
+      
+      {/* {(user)
         ? <Link className={`Menu__Link${pathname === '/favorites' ? ' Menu__Link-selected' : ''}`} to='/favorites' onClick={() => setOpen(!open)}>Favorites</Link>
         : ''
       }
@@ -46,28 +42,27 @@ export const Menu = React.memo(function Menu({ open, setOpen, onLogout, location
       {(user)
         ? ''
         : <Link className={`Menu__Link${pathname === '/register' ? ' Menu__Link-selected' : ''}`} to='/register' onClick={() => setOpen(!open)}>Register</Link>
-      }
+      } */}
     </div>
   );
 });
 
 export const UserAccount = React.memo(function UserAccount({ open, setOpen }) {
-  const { user } = useContext(UserContext);
 
-  if(user) {
-    return (
-      <div className="UserAccount">
-        <p onClick={() => setOpen(!open)}>{user.username} <span className="DownArrow">▼</span></p>
-      </div>
-    );
-  } else {
+  // if(user) {
+  //   return (
+  //     <div className="UserAccount">
+  //       <p onClick={() => setOpen(!open)}>{user.username} <span className="DownArrow">▼</span></p>
+  //     </div>
+  //   );
+  // } else {
     return (
       <div className="UserAccount">
         <Link className="UserAccount__Link" to="/login">Login</Link>
         <Link className="UserAccount__Link" to="/register">Register</Link>
       </div>
     );
-  }
+  //}
 });
 
 export const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOpen, onLogout }) {
@@ -81,15 +76,13 @@ export const UserAccountMenu = React.memo(function UserAccountMenu({ open, setOp
 export const Sidebar = React.memo(function Sidebar({ location }) {
   const { pathname } = location;
 
-  const { user } = useContext(UserContext);
-
   return (
     <div className="Menu">
       <Link className={`Menu__Link${pathname === '/' ? ' Menu__Link-selected' : ''}`} to='/'>Search</Link>
-      {(user)
+      {/* {(user)
         ? <Link className={`Menu__Link${pathname === '/favorites' ? ' Menu__Link-selected' : ''}`} to='/favorites'>Favorites</Link>
         : ''
-      }
+      } */}
     </div>
   );
 });
@@ -102,8 +95,6 @@ const NavBar = (props) => {
     setWindowWidth(window.innerWidth);
   };
 
-  const { setUser, setFavorites } = useContext(UserContext);
-
   useEffect(() => {
     resizeWindow();
     window.addEventListener("resize", resizeWindow);
@@ -113,9 +104,6 @@ const NavBar = (props) => {
   const onLogout = () => {
     setNavOpen(false);
     setAccountOpen(false);
-    TokenService.clearAuthToken();
-    setUser(null);
-    setFavorites([]);
     props.history.push('/');
   };
 

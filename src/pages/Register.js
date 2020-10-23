@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { Input, Button } from '../components/Utils';
 import { Link } from 'react-router-dom';
 
-import UserApiService from '../services/user-api-service';
-
 import '../styles/Register.css';
 
 export const SidePanel = React.memo(function SidePanel() {
@@ -24,27 +22,13 @@ export const RegisterForm = React.memo(function RegisterForm({ onRegister }) {
   
   const onSubmit = e => {
     e.preventDefault();
-    const { username, password, confirmPassword } = e.target;
+    const { password, confirmPassword } = e.target;
     
     setError(null);
     if(password.value !== confirmPassword.value) {
       setError('Passwords do not match!');
       return;
     }
-
-    UserApiService.registerUser({
-      username: username.value,
-      password: password.value
-    })
-      .then(() => {
-        username.value = '';
-        password.value = '';
-        confirmPassword.value = '';
-        onRegister();
-      })
-      .catch(res => {
-        setError(res.error);
-      })
   };
   
   return (

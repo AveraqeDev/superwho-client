@@ -27,7 +27,7 @@ export function getUser() {
 }
 
 export function getAuthToken() {
-    return localStorage.getItem.(LOCAL_STORAGE_KEY_AUTH)
+    return localStorage.getItem(LOCAL_STORAGE_KEY_AUTH)
 }
 
 /**

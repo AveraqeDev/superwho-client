@@ -13,6 +13,7 @@ import Register from '../pages/Register';
 
 import Search from '../pages/Search';
 import Favorites from '../pages/Favorites';
+import Nav from './Nav';
 
 const App = () => {
   const { key } = useLocation();
@@ -37,7 +38,10 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <NavBar />
+        {/* <NavBar /> */}
+        <Route path="/nav">
+          <Nav />
+        </Route>
       </header>
       <main>
           <Switch>
