@@ -1,9 +1,11 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
+
+import api from '../api'
+import { useAuthState } from '../hooks/AuthState';
 import PrivateRoute from '../components/PrivateRoute';
 import PublicRoute from '../components/PublicRoute';
 
-import ErrorBoundary from '../components/ErrorBoundary';
 import NavBar from './NavBar';
 
 import Login from '../pages/Login';
@@ -13,13 +15,31 @@ import Search from '../pages/Search';
 import Favorites from '../pages/Favorites';
 
 const App = () => {
+  const { key } = useLocation();
+  const { authenticated, dispatch } = useAuthState();
+
+  useEffect(() => {
+    let isCurrent = true
+    if(!authenticated) {
+      api.auth.getAuthenticatedUser().then(user => {
+        if(user && isCurrent) {
+          dispatch({ type: 'LOGIN', user })
+        }
+      })
+    }
+    return () => (isCurrent = false)
+  }, [authenticated, dispatch])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [key])
+
   return (
     <div className="App">
       <header>
         <NavBar />
       </header>
       <main>
-        <ErrorBoundary>
           <Switch>
             <PublicRoute
               path='/login'
@@ -41,7 +61,6 @@ const App = () => {
               component={Favorites}
             />
           </Switch>
-        </ErrorBoundary>
       </main>
     </div>
   );

@@ -1,18 +1,20 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import TokenService from '../services/token-service';
+import { useAuthState } from "../hooks/AuthState";
 
-const PublicRoute = ({ component, ...props }) => {
-  const Component = component;
+const PublicRoute = ({ children, ...props }) => {
+  const { authenticated } = useAuthState()
+
   return (
     <Route 
       {...props}
-      render={componentProps => (
-        TokenService.hasAuthToken()
-          ? <Redirect to='/' />
-          : <Component {...componentProps} />
+    >
+      {authenticated ? (
+        <Redirect to='/' />
+      ) : (
+        {children}
       )}
-    />
+    </Route>
   );
 };
 
